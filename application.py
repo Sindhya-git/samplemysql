@@ -18,7 +18,7 @@ class Storage():
       user   = os.getenv('xxuser'),
       passwd = os.getenv('welcome1'),
       db     = os.getenv('sampledb'),
-      host   = os.getenv('mysql-gamification.inmbzp8022.in.dst.ibm.com'),
+      host   = os.getenv('custom-mysql.gamification.svc.cluster.local'),
       port   = int(os.getenv('3306'))
     )
 
