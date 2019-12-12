@@ -7,10 +7,10 @@ application.debug = True
 
 @application.route('/')
 def hello_world():
-  print(" start hello")
+  print("start hello")
   storage = Storage()
   score = storage.score()
-  print(" end hello")
+  print("end hello")
   return "Hello PRODUCT DB !" % score
 
 class Storage():
@@ -23,14 +23,8 @@ class Storage():
       port   = int(os.getenv('MYSQL_SERVICE_PORT',"3306"))
     )
     print(" init successfull")
-
     cur = self.db.cursor()
-    #cur.execute("CREATE TABLE IF NOT EXISTS scores(score INT)")
-
-  def populate(self):
-    cur = self.db.cursor()
-    cur.execute("INSERT INTO scores(score) VALUES(1234)")
-
+    
   def score(self):
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_CATALOG")
