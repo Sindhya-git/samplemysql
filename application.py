@@ -19,8 +19,8 @@ class Storage():
       user   = os.getenv('MYSQL_USER', "xxuser"),
       passwd = os.getenv('MYSQL_PASSWORD', "welcome1")
       db     = os.getenv('MYSQL_DATABASE',"sampledb"),
-      host   = os.getenv(MYSQL_SERVICE_HOST', "custom-mysql.gamification.svc.cluster.local"),
-      port   = int(os.getenv(''MYSQL_SERVICE_PORT',"3306"))
+      host   = os.getenv('MYSQL_SERVICE_HOST', "custom-mysql.gamification.svc.cluster.local"),
+      port   = int(os.getenv('MYSQL_SERVICE_PORT',"3306"))
     )
     print(" init successfull")
 
