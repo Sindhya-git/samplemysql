@@ -29,7 +29,7 @@ class Storage():
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
     row = cur.fetchone()
     for x in row:
-    return row
+      return row
 
 if __name__ == "__main__":
     application.run()
