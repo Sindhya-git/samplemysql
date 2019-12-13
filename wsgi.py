@@ -29,9 +29,15 @@ class Storage():
     cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
     row = cur.fetchall()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
-    for x in range(cur.rowcount):
-      print(x)
+    for x in row:
+      print("Item Number = ", row[0], )
+      print("Description = ", row[1])
+      print("Long description  = ", row[2])
+      print("Cat category  = ", row[3])
+      print("Brand  = ", row[4], "\n")
+      print("printing x", x)
       print(row)
+      x = row[0] + row [1] + row [2] + row [3] + row [4]
       return x
     
 if __name__ == "__main__":
