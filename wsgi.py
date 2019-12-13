@@ -28,13 +28,11 @@ class Storage():
 
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
-    row = cur.fetchall()
+    row = cur.fetchone()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
-    for x in cur.rowcount:
-      print("Item Number = ", row, )
-      print("printing x", x)
-      print(type(x))
-      return row[0], row[1], row[2], row[3], row[4]
+    print("Item Number = ", row, )
+    print(row[0])
+    return row[0], row[1], row[2], row[3], row[4]
     
 if __name__ == "__main__":
     application.run()
