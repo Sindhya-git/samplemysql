@@ -8,6 +8,7 @@ def hello_world():
 
   storage = Storage()
   score = storage.score()
+  print(type(score))
   return score
 
 class Storage():
@@ -36,8 +37,7 @@ class Storage():
       print("Cat category  = ", row[3])
       print("Brand  = ", row[4], "\n")
       print("printing x", x)
-      print(row)
-      x = row[0] + row [1] + row [2] + row [3] + row [4]
+      print(type(x))
       return x
     
 if __name__ == "__main__":
