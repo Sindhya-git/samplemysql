@@ -27,7 +27,7 @@ class Storage():
 
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
-    row = cur.fetchone()
+    row = cur.fetchall()
     for x in row:
       print(x)
       print(row)
