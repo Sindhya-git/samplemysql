@@ -40,7 +40,7 @@ class Storage():
 
     cur = self.db.cursor()
 
-    cur.execute("SELECT * FROM XXIBM_PRODUCT_CATALOG")
+    cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
 
     row = cur.fetchone()
 
