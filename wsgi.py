@@ -34,7 +34,7 @@ class Storage():
       print("Item Number = ", row, )
       print("printing x", x)
       print(type(x))
-      return x
+      return row
     
 if __name__ == "__main__":
     application.run()
