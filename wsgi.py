@@ -9,6 +9,7 @@ def hello_world():
   storage = Storage()
   a,b,c,d,e = storage.score()
   print(a)
+  print("type of a is :", type(a))
   return a,b,c,d,e
 
 class Storage():
@@ -30,6 +31,7 @@ class Storage():
     cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
     row = cur.fetchall()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
+    print("type of row is :", type(row))
     print("Item Number = ", row, )
     print(row[0],"  ", row[1])
     return row[0], row[1], row[2], row[3], row[4]
