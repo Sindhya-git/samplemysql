@@ -29,10 +29,10 @@ class Storage():
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
     row = cur.fetchall()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
-    for x in row:
+    for x in range(cur.rowcount)
       print(x)
       print(row)
-      return row[cur.rowcount]
-
+      return x
+    
 if __name__ == "__main__":
     application.run()
