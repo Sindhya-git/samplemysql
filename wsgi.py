@@ -31,7 +31,7 @@ class Storage():
     row = cur.fetchone()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
     for x in row:
-      print("Item Number = ", row[0], )
+      print("Item Number = ", row, )
       print("printing x", x)
       print(type(x))
       return x
