@@ -7,9 +7,9 @@ application = Flask(__name__)
 def hello_world():
 
   storage = Storage()
-  score = storage.score()
-  print(type(score))
-  return score
+  a,b,c,d,e = storage.score()
+  print(a)
+  return a,b,c,d,e
 
 class Storage():
 
@@ -28,13 +28,13 @@ class Storage():
 
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
-    row = cur.fetchone()
+    row = cur.fetchall()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
-    for x in row:
+    for x in cur.rowcount:
       print("Item Number = ", row, )
       print("printing x", x)
       print(type(x))
-      return row
+      return row[0], row[1], row[2], row[3], row[4]
     
 if __name__ == "__main__":
     application.run()
