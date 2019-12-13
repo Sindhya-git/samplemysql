@@ -27,9 +27,9 @@ class Storage():
 
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
-    row = cur.fetchall()
+    row = cur.fetchone()
 
-    return row[0]
+    return row
 
 if __name__ == "__main__":
     application.run()
