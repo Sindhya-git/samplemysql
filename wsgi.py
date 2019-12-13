@@ -26,10 +26,10 @@ class Storage():
   def score(self):
 
     cur = self.db.cursor()
-    cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
+    cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
     row = cur.fetchall()
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
-    for x in range(cur.rowcount)
+    for x in range(cur.rowcount):
       print(x)
       print(row)
       return x
