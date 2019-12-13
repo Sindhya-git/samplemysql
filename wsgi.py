@@ -28,7 +28,7 @@ class Storage():
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
     row = cur.fetchall()
-    print("Total number of rows in PRODUCT_SKU is: ", cur.rowcount)
+    print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
     for x in row:
       print(x)
       print(row)
