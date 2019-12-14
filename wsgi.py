@@ -8,6 +8,7 @@ def hello_world():
 
   storage = Storage()
   score = storage.score()
+  print("score is ",score)
   return score
 
 class Storage():
@@ -35,6 +36,7 @@ class Storage():
       db_out["row_" + i] = row[i]
       print(db_out)
       print(db_out["row_1"])   #specific output -- pass dict keyname
+    print("type of db_out is ", type(db_out))
     return db_out
     #print(row[0],"  ", row[1])
     #return row[0], row[1], row[2], row[3], row[4]
