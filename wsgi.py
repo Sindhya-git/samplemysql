@@ -33,6 +33,7 @@ class Storage():
     print("type of row is :", type(row))
     print("Item Number = ", row, )
     for i in range(0,cur.rowcount):
+      print("row i",row[i])
       db_out["row_" + i] = row[i]
       print(db_out)
       print(db_out["row_1"])   #specific output -- pass dict keyname
