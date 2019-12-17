@@ -29,9 +29,10 @@ class Storage():
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_STYLE")
     row = cur.fetchone()
+    db_out = {}
     print("Total number of row in PRODUCT_SKU is: ", cur.rowcount)
     print("type of row is :", type(row))
-    print("Item Number = ", row, )
+    print("Item  = ", row, )
     for i in range(0,cur.rowcount):
       print("row i",row[i])
       db_out["row_" + i] = row[i]
