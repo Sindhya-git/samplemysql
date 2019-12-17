@@ -9,6 +9,7 @@ application = Flask(__name__)
 def home_page():
   return render_template("home.html")
 
+@application.route("/data")
 def get_dbdata():
   storage = Storage()
   score = storage.score()
