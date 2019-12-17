@@ -18,7 +18,7 @@ class Storage():
 
   def __init__(self):
     
-    print("initializing DB)
+    print("initializing DB")
     self.db = MySQLdb.connect(
       user   = "xxuser",
       passwd = "welcome1",
