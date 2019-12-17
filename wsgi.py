@@ -17,7 +17,8 @@ def get_dbdata():
 class Storage():
 
   def __init__(self):
-
+    
+    print("initializing DB)
     self.db = MySQLdb.connect(
       user   = "xxuser",
       passwd = "welcome1",
@@ -32,7 +33,7 @@ class Storage():
     cur = self.db.cursor()
     cur.execute("SELECT * FROM XXIBM_PRODUCT_SKU")
     row = cur.fetchall()
-
+    print("row is ", row)
     return str(row)
 
 if __name__ == "__main__":
