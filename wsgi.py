@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config['IMAGES_DEST'] = 'static/images'
 
 # Config MySQL
-mysql = MySQL()
+mysql = MySQLdb()
 app.config['MYSQL_HOST'] = "custom-mysql.gamification.svc.cluster.local"
 app.config['MYSQL_USER'] = "xxuser"
 app.config['MYSQL_PASSWORD'] = "welcome1"
