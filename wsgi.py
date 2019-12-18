@@ -34,7 +34,7 @@ def home_page():
   values = 'Luggage'
   cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
   luggage = cur.fetchall()
-  return render_template('home.html', shirts=shirts, shoes=shoes, luggage=luggage, form=form)
+  return render_template('home.html')
 
 @app.route("/search",methods=['GET', 'POST'])
 def get_dbdata():
