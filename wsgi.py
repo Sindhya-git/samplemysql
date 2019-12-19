@@ -4,11 +4,11 @@ import MySQLdb
 import os
 
 #Initialize flask
-app = Flask(__name__)
-app.config['IMAGES_DEST'] = 'static/images'
+application = Flask(__name__)
+#app.config['IMAGES_DEST'] = 'static/images'
 
 
-@app.route("/")
+@application.route("/")
 def home_page():
   db = dbget()
   #form = LoadForm(request.form)
