@@ -10,7 +10,13 @@ application = Flask(__name__)
 
 @application.route("/")
 def home_page():
-  db = dbget()
+  self.db = MySQLdb.connect(
+      user   = "xxuser",
+      passwd = "welcome1",
+      db     ="sampledb",
+      host   = "custom-mysql.gamification.svc.cluster.local",
+      port   = int('3306')
+    )
   cur = self.db.cursor()
   #form = LoadForm(request.form)
   print("inside home page")  
