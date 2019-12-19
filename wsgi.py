@@ -10,10 +10,11 @@ application = Flask(__name__)
 
 @application.route("/")
 def home_page():
-  product = dbget()
+  
   #form = LoadForm(request.form)
   print("inside home page",)  
   values = 'Shirts'
+  product = dbget()
   #cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
   shirts = product.score()
   print("shirt fetched:", shirts)
@@ -25,7 +26,7 @@ def home_page():
   #cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
   luggage = product.score()
   print("luggage  fetched:", luggage)
-  return render_template('home.html', shirts=shirts, shoes=shoes, luggage=luggage)
+  return render_template('home.html', shirts=shirts)
 
 
 def get_dbdata():
@@ -46,6 +47,7 @@ class dbget():
 
   def score(self):
     cur = self.db.cursor()
+    values = 'Shirts'
     cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
     row = cur.fetchall()
     return str(row)
