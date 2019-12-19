@@ -72,7 +72,7 @@ body {
 .wrap{
   width: 40%;
   position: absolute;
-  top: 27%;
+  top: 28%;
   left: 78%;
   transform: translate(-50%, -50%);
 }
@@ -95,21 +95,23 @@ body {
 
  <div class="container">
     <div class="row">
+      {% for product in shirts %}
         <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3 mb-4">
                     <div class="card h-100">
                         
                             <div class="card-img-top";
-                                 style="background: url('static/shirt.jpg'); height:200px;width:100% ">
+                                 style="background: url('static/shirt.jpg'); background-repeat:no-repeat; height:200px;width:100% ">
                             </div>
                         
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="/">Shirts</a>
                             </h5>
-                            <h4>{{shirts.pname}}</h4>
+                            <h4>{{shirts.COMMODITY_NAME}}</h4>
                         </div>
                    </div>
          </div>
+      {% endfor %}
     </div>
  </div>
     
