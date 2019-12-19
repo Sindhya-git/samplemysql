@@ -44,13 +44,11 @@ class dbget():
     )
     cur = self.db.cursor()
 
- def score(self):
-
-  cur = self.db.cursor()
-  cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
-  row = cur.fetchall()
-
-  return str(row)
+  def score(self):
+    cur = self.db.cursor()
+    cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
+    row = cur.fetchall()
+    return str(row)
 
 if __name__ == "__main__":
     application.run()
