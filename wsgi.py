@@ -10,8 +10,7 @@ application = Flask(__name__)
 
 @application.route("/")
 def home_page():
-   product = dbget()
-    
+  product = dbget()
   #form = LoadForm(request.form)
   print("inside home page",)  
   values = 'Shirts'
