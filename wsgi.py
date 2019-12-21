@@ -1,31 +1,34 @@
 from flask import Flask, render_template, json, request, session, redirect
-#from wtforms import Form, BooleanField, StringField, PasswordField, validators
-import MySQLdb
+from flask_mysqldb import MySQL
+from wtforms import Form, StringField, TextAreaField, PasswordField, validators, SelectField
 import os
 
 #Initialize flask
-application = Flask(__name__)
-#app.config['IMAGES_DEST'] = 'static/images'
+app = Flask(__name__)
+# Config MySQL
+mysql = MySQL()
+app.config['MYSQL_HOST']  = "custom-mysql.gamification.svc.cluster.local"
+app.config['MYSQL_USER']  = "xxuser"
+app.config['MYSQL_PASSWORD'] = "welcome1"
+app.config['MYSQL_DB']    = "sampledb"
+app.config['MYSQL_PORT']  = int('3306')
+app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+
+# Initialize the app for use with this MySQL class
+mysql.init_app(app)
 
 
 @application.route("/")
 def home_page():
   
-  #form = LoadForm(request.form)
+ #form = LoadForm(request.form)
   print("inside home page",)  
+  cur = mysql.connection.cursor()
   values = 'Shirts'
-  product = dbget()
-  #cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
-  shirts = product.score()
-  print("shirt fetched:", shirts)
-  values = 'Shoes'
-  #cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
-  shoes = product.score()
-  print("shoes fetched:", shoes)
-  values = 'Luggage'
-  #cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
-  luggage = product.score()
-  print("luggage  fetched:", luggage)
+  cur.execute("SELECT * FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s LIMIT 4", (values,))
+  shirts = cur.fetchall()
+ # Close Connection
+  cur.close()
   return render_template('home.html', shirts=shirts)
 
 
@@ -51,8 +54,8 @@ class dbget():
     values = 'Clothing'
     cur.execute("SELECT COMMODITY,COMMODITY_NAME INTO @commodity , @commodity_name FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s LIMIT 1", (values,))
     row = cur.fetchall()
-    print("row is:", row + @commodity + @commodity_name)
+    print("row is:", row )
     return str(row)
 
 if __name__ == "__main__":
-    application.run()
+    app.run()
