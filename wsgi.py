@@ -32,10 +32,11 @@ def home_page():
   return render_template('home.html', shirts=shirts)
 
 if 'view' in request.args:
-        item_= request.args['view']
-        cur2 = mysql.connection.cursor()
-      curso.execute("SELECT * FROM products WHERE id=%s", (product_id,))
-        product = curso.fetchall()
+    item_number= request.args['view']
+    cur2 = mysql.connection.cursor()
+    cur2.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=%s", (item_number,))
+    product1 = cur2.fetchall()
+    return render_template('product_detail.html', prdtdetail=product1)
 
 
     
