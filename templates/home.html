@@ -245,14 +245,14 @@ body {
       {% for product in shirts %}
         <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card mb-4">
-                        
-                            <div class="card-img-top_{{product.COMMODITY}}"
-                                 style="background: url('shirt.jpg'); background-repeat:no-repeat; height:200px;width:100% ">
+                         <a href="/{{product.FAMILY_NAME}}?view={{product.CLASS}}">
+                            <div class="card-img-top_{{product.CLASS_NAME}}"
+                                 style="background: url('static/shirt.jpg'); background-repeat:no-repeat; height:100px;width:100% ">
                             </div>
-                        
+                         </a>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="/">Shirts</a>
+                                <a href="/">{{product.COMMODITY_NAME}}</a>
                             </h5>
                             <h4>{{shirts}}</h4>
                        </div>
