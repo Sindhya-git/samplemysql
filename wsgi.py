@@ -18,7 +18,7 @@ app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 mysql.init_app(app)
 
 
-@application.route("/")
+@app.route("/")
 def home_page():
   
  #form = LoadForm(request.form)
