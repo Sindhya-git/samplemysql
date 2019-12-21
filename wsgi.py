@@ -24,7 +24,7 @@ def home_page():
  #form = LoadForm(request.form)
   print("inside home page",)  
   cur = mysql.connection.cursor()
-  values = 'Shirts'
+  values = 'Clothing'
   cur.execute("SELECT * FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s LIMIT 4", (values,))
   shirts = cur.fetchall()
  # Close Connection
