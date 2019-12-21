@@ -273,11 +273,12 @@ body {
 <div class="vl"></div>
 
  <div class="shirt-container">
+	 {% for product in shirts %}
     <div class="row">
       <div class="column">
-      {% for product in shirts %}
+      
         
-                    <div class="card mb-4">
+                    <div class="card">
                          <a href="/{{product.FAMILY_NAME}}?view={{product.CLASS}}">
                             <div class="card-img-top_{{product.CLASS_NAME}}"
                                  style="background: url('static/shirt.jpg'); background-repeat:no-repeat; height:200px;width:100% ">
@@ -291,9 +292,10 @@ body {
                        </div>
                    </div>
          
-      {% endfor %}
+      
       </div>
     </div>
+	 {% endfor %}
  </div>
     
 
