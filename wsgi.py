@@ -47,8 +47,9 @@ class dbget():
 
   def score(self):
     cur = self.db.cursor()
-    values = 'Dental'
-    cur.execute("SELECT COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE CLASS_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
+    print("in score",)
+    values = 'Clothing'
+    cur.execute("SELECT COMMODITY,COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
     row = cur.fetchall()
     print("row is:", row)
     return str(row)
