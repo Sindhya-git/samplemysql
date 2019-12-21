@@ -1,0 +1,27 @@
+{% extends 'home.html' %}
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+        
+            <div class="row">
+                {% for product in prdtdetail %}
+                    <img class="card-img""
+                             src="static/shirt.jpg" alt="">
+                                   
+                        <div class="card-header">
+                            Product Details
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{ product.DESCRIPTION}}</h3>
+                            <p >{{ product.LONG_DESCRIPTION}}</p>
+                            <p >SIZE    :{{ product.SKU_ATTRIBUTE_VALUE1}}</p>
+                            <p >COLOUR  : {{ product.SKU_ATTRIBUTE_VALUE2}}</p>
+                            <p >PRICE   :&#8377{{ product.LIST_PRICE}}</p> 
+                            <p >DISCOUNT:{{ product.DISCOUNT}}</p>  
+                            <p >AVAILABLE : Yes</p>                     
+                        </div>   
+                {% endfor %}
+              </div>
+</div>
+<!-- /.container -->
+{% endblock %}
