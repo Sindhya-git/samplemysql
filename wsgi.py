@@ -23,13 +23,19 @@ def home_page():
   
  #form = LoadForm(request.form)
   print("inside home page",)  
-  cur = mysql.connection.cursor()
+  cur1 = mysql.connection.cursor()
   values = 'Clothing'
-  cur.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER LIMIT 25")
-  shirts = cur.fetchall()
+  cur1.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER LIMIT 25")
+  shirts = cur1.fetchall()
  # Close Connection
-  cur.close()
+  cur1.close()
   return render_template('home.html', shirts=shirts)
+
+if 'view' in request.args:
+        item_= request.args['view']
+        cur2 = mysql.connection.cursor()
+      curso.execute("SELECT * FROM products WHERE id=%s", (product_id,))
+        product = curso.fetchall()
 
 
     
