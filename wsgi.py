@@ -49,9 +49,12 @@ class dbget():
     cur = self.db.cursor()
     print("in score",)
     values = 'Clothing'
-    cur.execute("SELECT COMMODITY,COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s ORDER BY RAND() LIMIT 1", (values,))
+    cur.execute("SELECT COMMODITY,COMMODITY_NAME FROM XXIBM_PRODUCT_CATALOGUE WHERE FAMILY_NAME=%s", (values,))
     row = cur.fetchall()
-    print("row is:", row)
+    print("row is:", row[0] + row[1])
+    (commodity, commodity_name) = row
+    print("commodity is:", commodity)
+    print("commodity_name is:", commodity_name)
     return str(row)
 
 if __name__ == "__main__":
