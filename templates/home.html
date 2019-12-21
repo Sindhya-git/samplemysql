@@ -252,9 +252,9 @@ body {
 <div class="vl"></div>
 
  <div class="shirt-container">
-	 {% for product in shirts %}
+	 
     <div class="flex-container">
-      
+      {% for product in shirts %}
       
         
                     <div class="card">
@@ -271,10 +271,10 @@ body {
                        </div>
                    </div>
          
-      
+      {% endfor %}
       
     </div>
-	 {% endfor %}
+	 
  </div>
     
 
