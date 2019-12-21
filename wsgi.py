@@ -1,6 +1,7 @@
 from flask import Flask, render_template, json, request, session, redirect
 from flask_mysqldb import MySQL
 from wtforms import Form, StringField, TextAreaField, PasswordField, validators, SelectField
+from functools import wraps
 import os
 
 #Initialize flask
