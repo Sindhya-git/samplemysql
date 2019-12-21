@@ -4,21 +4,21 @@ from wtforms import Form, StringField, TextAreaField, PasswordField, validators,
 import os
 
 #Initialize flask
-app = Flask(__name__)
+application = Flask(__name__)
 # Config MySQL
 mysql = MySQL()
-app.config['MYSQL_HOST']  = "custom-mysql.gamification.svc.cluster.local"
-app.config['MYSQL_USER']  = "xxuser"
-app.config['MYSQL_PASSWORD'] = "welcome1"
-app.config['MYSQL_DB']    = "sampledb"
-app.config['MYSQL_PORT']  = int('3306')
-app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
+application.config['MYSQL_HOST']  = "custom-mysql.gamification.svc.cluster.local"
+application.config['MYSQL_USER']  = "xxuser"
+application.config['MYSQL_PASSWORD'] = "welcome1"
+application.config['MYSQL_DB']    = "sampledb"
+application.config['MYSQL_PORT']  = int('3306')
+application.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
 # Initialize the app for use with this MySQL class
-mysql.init_app(app)
+mysql.init_app(application)
 
 
-@app.route("/")
+@application.route("/")
 def home_page():
   
  #form = LoadForm(request.form)
@@ -58,4 +58,4 @@ class dbget():
     return str(row)
 
 if __name__ == "__main__":
-    app.run()
+    application.run()
