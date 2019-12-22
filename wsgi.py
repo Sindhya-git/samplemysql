@@ -42,18 +42,31 @@ def search():
     if 'q' in request.args:
         q = request.args['q']
         print ("q is :",q)
+        productsrch = ' '
         # Create cursor
         cur3 = mysql.connection.cursor()
-        # Get message
+   # Get the row count in cur3.rowcount
         query_string = "SELECT * FROM XXIBM_PRODUCT_CATALOGUE WHERE COMMODITY_NAME LIKE %s ORDER BY COMMODITY ASC"
         cur3.execute(query_string, ('%' + q + '%',))
-        commosrch = cur3.fetchall()
-        cur4 = mysql.connection.cursor()
-        productsrch = ' '
-        for commo in commosrch:
-          print ("commo is:", commo['COMMODITY'])
-          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and s.CATALOGUE_CATEGORY = %s LIMIT 25", (commo['COMMODITY'],))
-          productsrch = productsrch + cur4.fetchall()
+        commosrch1 = cur3.fetchall()
+        print("cur3 is :",cur3.rowcount)
+   # Collect all the commodity in dict by looping thru the cursor    
+        commo_id = []
+        for i in range(0,cur3.rowcount):
+          cur3.execute(query_string, ('%' + q + '%',))
+          commosrch = cur3.fetchone()
+          print ("commo1 is:", commosrch['COMMODITY'])
+          commo_id.append(commosrch['COMMODITY'])
+        print("commo_id is :", str(commo_id))
+        
+        if commo_id:
+          cur4 = mysql.connection.cursor()
+          productsrch = ' '
+          commo_dict = ','.join((str(n) for n in commo_id))
+          print ("commo2 is:", commo_dict)
+          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and s.CATALOGUE_CATEGORY IN %s LIMIT 25", %commo_dict)
+          productsrch = cur4.fetchall()
+          
         cur3.close()
         cur4.close()
         #end-for  
