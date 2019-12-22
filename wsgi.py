@@ -18,20 +18,16 @@ application.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # Initialize the app for use with this MySQL class
 mysql.init_app(application)
 
+def wrappers(func, *args, **kwargs):
+    def wrapped():
+        print("in wrapped",)
+        return func(*args, **kwargs)
+
+    return wrapped
+
 
 @application.route("/")
 def home_page():
-  
- #form = LoadForm(request.form)
-  print("inside home page",)  
-  cur1 = mysql.connection.cursor()
-  values = 'Clothing'
-  cur1.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER LIMIT 25")
-  shirts = cur1.fetchall()
- # Close Connection
-  cur1.close()
-  return render_template('home.html', shirts=shirts)
-
   if 'view' in request.args:
     item_number= request.args['view']
     print ("item number is :", item_number)
@@ -39,7 +35,17 @@ def home_page():
     cur2.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=%s", (item_number,))
     product1 = cur2.fetchall()
     return render_template('product_detail.html', prdtdetail=product1)
+  else:
+    print("inside home page",)  
+    cur1 = mysql.connection.cursor()
+    values = 'Clothing'
+    cur1.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER LIMIT 25")
+    shirts = cur1.fetchall()
+ # Close Connection
+    cur1.close()
+    return render_template('home.html', shirts=shirts)
 
+  
 
     
 if __name__ == "__main__":
