@@ -51,7 +51,8 @@ def search():
         cur3.close()    # Close cursor3
         cur4 = mysql.connection.cursor()
         for commo in productsrch:
-          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and CATALOGUE CATEGORY=%s" LIMIT 25", (commo['COMMODITY'],))
+          print ("commo is:", commosrch['COMMODITY'])
+          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and CATALOGUE CATEGORY = %s LIMIT 25", (commosrch['COMMODITY'],))
           productsrch = cur4.fetchall()
           cur4.close()
         #end-for  
