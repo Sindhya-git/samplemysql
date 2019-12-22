@@ -1,23 +1,25 @@
 <html>
 <head>
-  <title>Home page</title>
+  <title>PRODUCT DETAIL</title>
   <!--<link rel="stylesheet" href="{{ url_for('static',     filename='css/home.css') }}">
   </link> -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="http://fortawesome.github.io/Font-Awesome/assets/font-awesome/css/font-awesome.css"> 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+  <style>
+    body {
+     margin: 0;
+     font-family: Arial, Helvetica, sans-serif;
+         }
 
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-        </head>
-  <body >
-<div class="container">
+  </style>
+</head>
+
+<body >
+  <h5> DISPLAYING PRODUCT DETAILS </h5> 
+<div class="prdt1-container">
         
             <div class="row">
-                {% for product in prdtdetail %}
+                {% for product1 in prdtdetail %}
                     <img class="card-img""
                              src="static/shirt.jpg" alt="">
                                    
@@ -25,12 +27,12 @@ body {
                             Product Details
                         </div>
                         <div class="card-body">
-                            <h3 class="card-title">{{ product.DESCRIPTION}}</h3>
-                            <p >{{ product.LONG_DESCRIPTION}}</p>
-                            <p >SIZE    :{{ product.SKU_ATTRIBUTE_VALUE1}}</p>
-                            <p >COLOUR  : {{ product.SKU_ATTRIBUTE_VALUE2}}</p>
-                            <p >PRICE   :&#8377{{ product.LIST_PRICE}}</p> 
-                            <p >DISCOUNT:{{ product.DISCOUNT}}</p>  
+                            <h3 class="card-title">{{ product1.DESCRIPTION}}</h3>
+                            <p >{{ product1.LONG_DESCRIPTION}}</p>
+                            <p >SIZE    :{{ product1.SKU_ATTRIBUTE_VALUE1}}</p>
+                            <p >COLOUR  : {{ product1.SKU_ATTRIBUTE_VALUE2}}</p>
+                            <p >PRICE   :&#8377{{ product1.LIST_PRICE}}</p> 
+                            <p >DISCOUNT:{{ product1.DISCOUNT}}</p>  
                             <p >AVAILABLE : Yes</p>                     
                         </div>   
                 {% endfor %}
