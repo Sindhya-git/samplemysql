@@ -52,7 +52,7 @@ def search():
         productsrch = ' '
         for commo in commosrch:
           print ("commo is:", commo['COMMODITY'])
-          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and CATALOGUE CATEGORY = %s LIMIT 25", (commo['COMMODITY'],))
+          cur4.execute("SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and s.CATALOGUE_CATEGORY = %s LIMIT 25", (commo['COMMODITY'],))
           productsrch = cur4.fetchall()
           cur3.close()
           cur4.close()
