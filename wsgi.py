@@ -56,10 +56,8 @@ def search():
           productsrch = cur4.fetchall()
           cur4.close()
         #end-for  
-        flash('Showing result for: ' + q, 'success')
         return render_template('search.html', product_srch=productsrch)
     else:
-        flash('Search again', 'danger')
         return render_template('search.html')  
 
     
