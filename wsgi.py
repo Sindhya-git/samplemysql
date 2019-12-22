@@ -37,7 +37,7 @@ def home_page():
     cur1.close()
     return render_template('home.html', shirts=shirts)
 
-@app.route('/search', methods=['POST', 'GET'])
+@application.route('/search', methods=['POST', 'GET'])
 def search():
     if 'q' in request.args:
         q = request.args['q']
