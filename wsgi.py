@@ -50,13 +50,16 @@ def search():
         cur3.execute(query_string, ('%' + q + '%',))
         commosrch1 = cur3.fetchall()
         print("cur3 is :",cur3.rowcount)
+        cur3.execute(query_string, ('%' + q + '%',))
+        commosrch = cur3.fetchone()
+          
    # Collect all the commodity in dict by looping thru the cursor    
         commo_id = []
         for i in range(0,cur3.rowcount):
-          cur3.execute(query_string, ('%' + q + '%',))
-          commosrch = cur3.fetchone()
           print ("commo1 is:", commosrch['COMMODITY'])
-          commo_id.append(commosrch['COMMODITY'])
+          commo_id.append(commosrch['COMMODITY'])          
+          commosrch = cur3.fetchone()
+          
         print("commo_id is :", str(commo_id))
         
         if commo_id:
