@@ -65,11 +65,12 @@ def search():
         if commo_id:
           cur4 = mysql.connection.cursor()
           productsrch = ' '
-          commo_dict = ','.join((str(n) for n in commo_id))
+          commo_dict = ','.join((int(n) for n in commo_id))
           print ("commo2 is:", commo_dict)
           query = "SELECT s.ITEM_NUMBER, s.DESCRIPTION,s.LONG_DESCRIPTION, s.SKU_ATTRIBUTE_VALUE1,s.SKU_ATTRIBUTE_VALUE2,p.LIST_PRICE,p.DISCOUNT FROM XXIBM_PRODUCT_SKU s INNER JOIN XXIBM_PRODUCT_PRICING p WHERE s.ITEM_NUMBER=p.ITEM_NUMBER and s.CATALOGUE_CATEGORY IN (%s)" %commo_dict
           cur4.execute(query)
           productsrch = cur4.fetchall()
+          print("productsrch is :",productsrch)
           
         cur3.close()
         cur4.close()
