@@ -61,6 +61,7 @@ def search():
           commosrch = cur3.fetchone()
           
         print("commo_id is :", str(commo_id))
+        cur3.close()
         
         if commo_id:
           cur4 = mysql.connection.cursor()
@@ -71,13 +72,11 @@ def search():
           cur4.execute(query)
           productsrch = cur4.fetchall()
           print("productsrch is :",productsrch)
-          
-        cur3.close()
-        cur4.close()
-        #end-for  
-        return render_template('search.html', product_srch=productsrch)
-    else:
-        return render_template('search.html')  
+          cur4.close()
+        
+          return render_template('search.html', product_srch=productsrch)
+        else:
+          return render_template('search.html')  
 
     
 if __name__ == "__main__":
