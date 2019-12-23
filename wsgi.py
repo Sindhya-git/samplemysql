@@ -18,6 +18,16 @@ application.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 # Initialize the app for use with this MySQL class
 mysql.init_app(application)
 
+def my_view(request):
+  print ("in my_view",)
+  if request.method == "POST":
+        display_type = request.POST.get("chkbox", None)
+        if chkbox in ["Reflex"]:
+          print("reflex checked",)
+        if chkbox in ["VMlanm"]:
+          print("mlanm checked",)
+         
+
 @application.route("/")
 def home_page():
   if 'view' in request.args:
